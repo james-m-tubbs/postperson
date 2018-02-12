@@ -4,31 +4,31 @@ import React, {Component} from 'react'
 class Form extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {textValue: '', selectValue: ''};
-
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleTextChange = this.handleTextChange.bind(this);
-		this.handleSelectChange = this.handleSelectChange.bind(this);
+		this.state = {
+			textValue: '', 
+			selectValue: 'GET', 
+			displayValue: 'Waiting for Input...',
+			submitToggle: false 
+		};
 	}
 
-	handleTextChange(event) {
+	handleTextChange = (event) => {
 	  this.setState({textValue: event.target.value});
 	}
 
-	handleSelectChange(event) {
+	handleSelectChange = (event) => {
 	  this.setState({selectValue: event.target.value});
 	}
 
-
-
-	handleSubmit(event) {
-	  alert('A name was submitted: ' + this.state.value);
+	handleSubmit = (event) => {
+	  this.setState({displayValue: this.state.selectValue + ' -> ' + this.state.textValue})
 	  event.preventDefault();
 	}
 
 	render() {
 		return (
-			<form>
+			<form onSubmit={this.handleSubmit}>
+				<textarea rows="4" cols="50" value={this.state.displayValue}/>
 				<select value={this.state.selectValue} onChange={this.handleSelectChange}>
 				  <option value="GET">GET</option>
 				  <option value="POST">POST</option>
