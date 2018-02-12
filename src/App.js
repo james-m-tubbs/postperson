@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
-import './App.css';
-import Form from "./Form";
+import React, { Component } from 'react'
+import Console from './console/Console'
 
 class App extends Component {
   render() {
-      return <Form />;
+    return (
+      <div className="wrapper">
+        <Console />
+      </div>
+    )
   }
 }
 
-export default App;
+export default App
